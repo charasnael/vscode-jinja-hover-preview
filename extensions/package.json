@@ -1,0 +1,125 @@
+{
+  "name": "jinja-config-hover",
+  "publisher": "phanpy1607",
+  "displayName": "Jinja Config Hover",
+  "description": "Shows values from variables/*.yml when hovering over config references in Jinja templates.",
+  "version": "0.0.1",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/charasnael/vscode-jinja-hover-preview.git"
+  },
+  "bugs": {
+    "url": "https://github.com/charasnael/vscode-jinja-hover-preview/issues"
+  },
+  "homepage": "https://github.com/charasnael/vscode-jinja-hover-preview#readme",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onView:jinjaConfigHover.settingsView",
+    "onLanguage:jinja",
+    "onLanguage:jinja-html",
+    "onLanguage:plaintext",
+    "onLanguage:python",
+    "onLanguage:conf",
+    "onLanguage:ini",
+    "onLanguage:xml",
+    "onLanguage:properties",
+    "onLanguage:nginx",
+    "onLanguage:json",
+    "onLanguage:jsonc",
+    "onLanguage:haproxy",
+    "onLanguage:yaml",
+    "onLanguage:html"
+  ],
+  "main": "./extension.js",
+  "browser": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "jinjaConfigHover.openSettings",
+        "title": "Open Jinja Config Hover Settings"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "jinjaConfigHover",
+          "title": "Jinja Hover",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "jinjaConfigHover": [
+        {
+          "id": "jinjaConfigHover.settingsView",
+          "name": "Preview Settings",
+          "type": "webview"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Jinja Config Hover",
+      "properties": {
+        "jinjaConfigHover.variablesFolder": {
+          "type": "string",
+          "default": "variables",
+          "description": "Legacy folder containing YAML variable files. Use jinjaConfigHover.variableSources for multiple files and folders. Relative paths are resolved from the workspace folder. ${workspaceFolder} is also supported."
+        },
+        "jinjaConfigHover.variableSources": {
+          "type": "array",
+          "default": [
+            "variables"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "description": "YAML variable files or folders containing YAML variable files. Relative paths are resolved from the workspace folder. ${workspaceFolder} is also supported."
+        },
+        "jinjaConfigHover.languages": {
+          "type": "array",
+          "default": [
+            "jinja",
+            "jinja-html",
+            "plaintext",
+            "python",
+            "conf",
+            "ini",
+            "xml",
+            "properties",
+            "nginx",
+            "json",
+            "jsonc",
+            "yaml",
+            "haproxy",
+            "html"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "description": "VS Code language IDs where config hovers are enabled. Add new language IDs here without rebuilding the extension."
+        },
+        "jinjaConfigHover.filePatterns": {
+          "type": "array",
+          "default": [
+            "**/*.conf",
+            "**/*.properties",
+            "**/*nginx*.conf",
+            "**/*haproxy*.cfg",
+            "**/*haproxy*.conf"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "description": "File glob patterns where config hovers are enabled, regardless of language ID."
+        }
+      }
+    }
+  }
+}
