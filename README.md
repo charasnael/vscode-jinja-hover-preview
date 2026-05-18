@@ -211,7 +211,7 @@ vsce package
 Install 
 
 ```powershell
-ode --install-extension .\jinja-config-hover-0.0.1.vsix
+code --install-extension .\jinja-config-hover-0.0.1.vsix
 ```
 
 Publish to the Visual Studio Marketplace:
