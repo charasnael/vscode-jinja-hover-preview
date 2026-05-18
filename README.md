@@ -189,42 +189,9 @@ Settings are not modified from the side panel.
 
 ## Web IDE Compatibility
 
-The extension declares a `browser` entry and uses `vscode.workspace.fs` instead of Node.js filesystem APIs. This allows it to run in browser-based VS Code extension hosts such as GitLab Web IDE.
+Tested on my gitlab IDE running locally. If gitlab is running behind a reverse proxy, issues may be encountered on allowed origins
 
-For best compatibility in web IDEs:
 
-- use workspace-relative `variableSources`
-- avoid local absolute paths such as `C:\...`
-- keep variable files inside the opened repository
-
-## Development
-
-Open the extension folder in VS Code:
-
-```powershell
-cd extensions
-code .
-```
-
-Run the extension in an Extension Development Host with `F5`.
-
-Package it with:
-
-```powershell
-vsce package
-```
-
-The extension manifest is configured for publisher:
-
-```text
-phanpy1607
-```
-
-Source repository:
-
-```text
-https://github.com/charasnael/vscode-jinja-hover-preview
-```
 
 ## Publishing
 
@@ -241,18 +208,18 @@ cd extensions
 vsce package
 ```
 
+Install 
+
+```powershell
+ode --install-extension .\jinja-config-hover-0.0.1.vsix
+```
+
 Publish to the Visual Studio Marketplace:
 
 ```powershell
 vsce publish
 ```
 
-To publish to Open VSX for GitLab Web IDE usage:
-
-```powershell
-npm install -g ovsx
-ovsx publish .\jinja-config-hover-0.0.1.vsix -p <OPEN_VSX_TOKEN>
-```
 
 ## License
 
